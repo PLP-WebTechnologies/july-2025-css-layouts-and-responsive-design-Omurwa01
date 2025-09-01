@@ -1,0 +1,130 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    /* Grid for overall layout */
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    grid-area: header;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    grid-area: nav;
+    background-color: #333;
+    /* Flexbox for navigation */
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+main {
+    grid-area: main;
+    /* Grid for content and sidebar */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.content {
+    background-color: #f4f4f4;
+    padding: 1rem;
+}
+
+.cards {
+    /* Flexbox for cards */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 200px;
+}
+
+.sidebar {
+    background-color: #e0e0e0;
+    padding: 1rem;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    /* Tablet */
+    main {
+        grid-template-columns: 1fr;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    nav a {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile */
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+        grid-template-rows: auto auto 1fr auto;
+    }
+    .cards {
+        flex-direction: column;
+    }
+    .card {
+        flex: 1 1 100%;
+    }
+}
